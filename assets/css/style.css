@@ -122,22 +122,66 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  position: relative;
 }
 
-.image-container, .image-container li img { 
+.image-container li img { 
   width: 100%;
-  height: 100%; 
+  height: 100%;
+  object-fit: cover;
 }
 
  .image-container li {
-  min-width: 290px;
+  min-width: 300px;
   height: 100%;
+  flex-basis: 34%;
+  flex-grow: 1;
+  flex-shrink: 0;
  }
 
  .image-container { 
-  display: flex; 
+  width: 100%;
+  height: 50%;
+  display: flex;
+  overflow-x: scroll;
 }
+
+.image-container::-webkit-scrollbar { width: .1px; }
+.active-dot { color: #d2691e; }
+.active-li { transform: translateX(0); }
+
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -100%);
+}
+
+.previous-btn a, .next-btn a { font-size: 0; }
+
+.previous-btn a::before, .next-btn a::before {
+  font-family: "fontAwesome";
+  font-size: 40px;
+  color: #000;
+} 
+
+.previous-btn a::before { content: "\f359"; }
+.next-btn a::before { content: "\f35a"; }
+
+.dot-container li {
+  width: 10px;
+  height: 10px; 
+  border: 1px solid #000; 
+  border-radius: 20px;
+}
+
+.dot-container li { cursor: pointer; }
+
+.dot-container li a { font-size: 0; }
+
+.dot-container { margin: 15px 0; }
 
 /*=================================
   main styling ends here
